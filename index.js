@@ -26,12 +26,17 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {
-  animalCount = 0;
+function getTotalCount(animals){ 
+//should return a total of all animal cobjects count values  
+//set a variable for an accumulator 
+  let animalCount = 0;
+//set up a loop to iterate over the ANIMALS array 
   for(let obj of animals) {
+    //inside the loop we need to aADD out animal.count value to the total
     animalCount += obj.count
 
   }
+  //when the loop is finished return the total
   return animalCount;
 }
 
@@ -47,11 +52,17 @@ function getTotalCount(animals) {
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
+
+//creates a function that returns the kind from the inputted array of ANIMALS
 function getAllKinds(animals) {
+  //create a variable called kindArr to equal an empty array
   let kindArr = [];
+  //for of loop through the array ANIMALS
   for(let obj of animals) {
+    //for each animal in the ANIMALS array push the kind of animal into the empty array called kindArr
     kindArr.push(obj.kind)
   }
+  //return the new array with all kind of aninals from the ANIMALS array
   return kindArr;
 }
 
@@ -73,18 +84,26 @@ function getAllKinds(animals) {
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
 function filterByCountMinimum(animals = newAnimals, minimum = 5) {
-  let minObj = [];
-  for(let obj of animals) {
-    if(obj.count >= minimum) {
-      //minimum = 5;
-      minObj.push(obj.count)
-    //} else if 
-     // (obj.count >= 5) {
-      //  minObj.push(obj.count)
+  // let minObj = [];
+  // for(let obj of animals) {
+  //   if(animals[obj].count >= minimum) {
+  //     //minimum = 5;
+  //     minObj.push(animals[obj])
+  //   //} else if 
+  //    // (obj.count >= 5) {
+  //     //  minObj.push(obj.count)
       
+  //   }
+  // }
+  // return minObj;
+
+  let enoughAnimals = [];
+  for (let i = 0; i > animals.length; i++){
+    if (animals[i].count >= minimum) {
+      enoughAnimals.push(animals[i]);
     }
   }
-  return minObj;
+  return enoughAnimals;
 }
 
 /**
@@ -98,16 +117,27 @@ function filterByCountMinimum(animals = newAnimals, minimum = 5) {
  * ------------------
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
- */
+ *///CHECK THE EXAMPLE AND TEST INFORMATION 
 function getMostCommonAnimal(animals) {
-  let firstHigh = 0;
-  for(let obj of animals){
-    if(animals[obj] > firstHigh){
-      firstHigh.push(animals[obj])
-    } 
+  if (animals.length < 1){
+    return null;
+  }
+  let highestSoFar = animals[0];
+  for (let i = 1; i < animals.length; i++) {
+      if (animals[i].count > highestSoFar.count) {
+
+        highestSoFar = animals[i];
+      }
+  }
+  // let firstHigh = 0;
+  // for(let obj of animals){
+  //   if(animals[obj] > firstHigh){
+  //     firstHigh.push(animals[obj])
+  //   } 
       
-    }
-    return firstHigh;
+  //   }
+  return highestSoFar;
+  //   return firstHigh;
   }
 
 
