@@ -102,14 +102,14 @@ function filterByCountMinimum(animals = newAnimals, minimum = 5) {
 function getMostCommonAnimal(animals) {
   let firstHigh = 0;
   for(let obj of animals){
-    if(animals[obj] ===  firstHigh){
+    if(animals[obj] > firstHigh){
       firstHigh.push(animals[obj])
-    } else {
-      return null;
+    } 
+      
     }
+    return firstHigh;
   }
-  return firstHigh;
-}
+
 
 // Do not change anything below this line.
 module.exports = {
